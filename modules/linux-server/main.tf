@@ -2,7 +2,7 @@ data "azurerm_resource_group" "linux_vm" {
   name = var.resource_group_name
 }
 
-resource "azurerm_network_interface" "linux_vm" {
+resource "azurerm_network_interface" "linux_vm_nic" {
   count               = var.linux_vm_num
   name                = format("%s-%d-nic", var.linux_vm_name, count.index+1)
   resource_group_name = data.azurerm_resource_group.linux_vm.name

@@ -2,7 +2,7 @@ data "azurerm_resource_group" "windows_vm" {
   name = var.resource_group_name
 }
 
-resource "azurerm_network_interface" "windows_vm" {
+resource "azurerm_network_interface" "windows_vm_nic" {
   count               = var.windows_vm_num
   name                = format("%s-%d-nic", var.windows_vm_name, var.windows_vm_num, count.index+1)
   location            = coalesce(var.location, data.azurerm_resource_group.windows_vm.location)
