@@ -7,7 +7,7 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = data.azurerm_resource_group.network.name
   location            = coalesce(var.location, data.azurerm_resource_group.network.location)
 
-  address_space = var.vnet_address_space
+  address_space       = var.vnet_address_space
 }
 
 resource "azurerm_subnet" "subnet" {
