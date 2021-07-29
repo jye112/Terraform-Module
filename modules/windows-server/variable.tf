@@ -84,8 +84,8 @@ variable "os_disk_caching" {
   default     = "ReadWrite"
 }
 
-variable "public_ip_address_id" {
-  type        = string
-  description = "Public ip address id"
-  default = ""
-}
+# variable "public_ip_address_id" {
+#   type        = string
+#   description = "Public ip address id"
+#   default     = ""
+# }

@@ -108,7 +108,7 @@ module "linux" {
   sku                  = "18.04-LTS"
   os_tag               = var.os_tag
   subnet_id            = module.network.subnet_id
-  public_ip_address_id = module.linux_public_ip.public_ip_address_id
+  #public_ip_address_id = module.linux_public_ip.public_ip_address_id
   depends_on = [
     azurerm_resource_group.rg
   ]
@@ -129,7 +129,7 @@ module "window" {
   sku                  = "2019-Datacenter"
   os_tag               = var.os_tag
   subnet_id            = module.network.subnet_id
-  public_ip_address_id = module.window_public_ip.public_ip_address_id
+  #public_ip_address_id = module.window_public_ip.public_ip_address_id
   depends_on = [
     azurerm_resource_group.rg
   ]
