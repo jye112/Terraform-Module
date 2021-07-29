@@ -35,12 +35,12 @@ variable "os_tag" {
 }
 
 variable "admin_username" {
-  type        = string
+  type    = string
   default = "adminuser"
 }
 
 variable "admin_password" {
-  type        = string
+  type    = string
   default = "qwer1234!@#$"
 }
 
