@@ -94,7 +94,7 @@ module "window_public_ip" {
 }
 
 module "linux" {
-  source               = "../modules/linux_server"
+  source               = "../modules/linux-server"
   resource_group_name  = azurerm_resource_group.rg.name
   location             = var.location
   linux_vm_num         = 2
@@ -115,7 +115,7 @@ module "linux" {
 }
 
 module "window" {
-  source               = "../modules/window_server"
+  source               = "../modules/windows-server"
   resource_group_name  = azurerm_resource_group.rg.name
   location             = var.location
   windows_vm_num       = 2
