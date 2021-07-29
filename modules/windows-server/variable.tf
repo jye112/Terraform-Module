@@ -9,19 +9,13 @@ variable "location" {
   description = "location"
 }
 
-# NIC
-variable "nic_name" {
-  type        = string
-  description = "nic name"
-}
-
 variable "subnet_id" {
   type        = string
   description = "subnet id"
 }
 
 # VM
-variable "windwos_vm_num" {
+variable "windows_vm_num" {
   type = number
   description = "Windows VM Counts"
 }

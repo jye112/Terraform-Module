@@ -1,3 +1,4 @@
+# Required
 variable "resource_group_name" {
   type        = string
   description = "rg name"
@@ -8,12 +9,23 @@ variable "location" {
   description = "location"
 }
 
-variable "hostname" {
+variable "subnet_id" {
+  type        = string
+  description = "subnet id"
+}
+
+# VM
+variable "linux_vm_num" {
+  type = number
+  description = "Linux VM Counts"
+}
+
+variable "linux_vm_name" {
   type        = string
   description = "Computer name, host name"
 }
 
-variable "size" {
+variable "vm_size" {
   description = "linux vm size"
 }
 
@@ -50,11 +62,6 @@ variable "sku" {
 variable "os_tag" {
   type        = string
   description = "image version"
-}
-
-variable "subnet_id" {
-  type        = string
-  description = "subnet id"
 }
 
 
