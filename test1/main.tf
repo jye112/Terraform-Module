@@ -27,7 +27,7 @@ module "nsg" {
 
   rules = [
     {
-      name                       = "ssh"
+      name                       = "SSH"
       priority                   = 100
       direction                  = "Inbound"
       access                     = "Allow"
@@ -38,8 +38,19 @@ module "nsg" {
       destination_port_range     = "22"
     },
     {
-      name                       = "http"
+      name                       = "RDP"
       priority                   = 110
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_address_prefix      = "211.215.58.26"
+      source_port_range          = "*"
+      destination_address_prefix = "*"
+      destination_port_range     = "3389"
+    },
+    {
+      name                       = "HTTP"
+      priority                   = 120
       direction                  = "Inbound"
       access                     = "Allow"
       protocol                   = "Tcp"
@@ -48,17 +59,7 @@ module "nsg" {
       destination_address_prefix = "*"
       destination_port_range     = "80,8080"
     },
-    {
-      name                         = "private_rule"
-      priority                     = 120
-      direction                    = "Inbound"
-      access                       = "Allow"
-      protocol                     = "Tcp"
-      source_address_prefixes      = ["172.16.0.1", "172.16.0.2"]
-      source_port_range            = "*"
-      destination_address_prefixes = ["10.0.0.0/24", "192.168.0.1"]
-      destination_port_range       = "3000,3001"
-    }
+
   ]
 
   # if you want attach nsg to subnet, set true and subnet_id
