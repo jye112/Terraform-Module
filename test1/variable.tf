@@ -20,27 +20,27 @@ variable "allocation_method" {
 
 # VM
 variable "vm_size" {
-    type = string
-    default = "Standard_D2s_v3"
+  type = string
+  default = "Standard_D2s_v3"
 }
 
 variable "os_disk_sku" {
-    type = string
-    default = "Standard_LRS"
+  type = string
+  default = "Standard_LRS"
 }
 
 variable "os_tag" {
-    type = string
-    default = "latest"
+  type = string
+  default = "latest"
 }
 
 variable "admin_username" {
   type        = string
-  description = "adminuser"
+  default = "adminuser"
 }
 
 variable "admin_password" {
   type        = string
-  description = "qwer1234!@#$"
+  default = "qwer1234!@#$"
 }
 
