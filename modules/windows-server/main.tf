@@ -25,7 +25,7 @@ resource "azurerm_windows_virtual_machine" "windows_vm" {
   admin_username      = var.admin_username
   admin_password      = var.admin_password
   network_interface_ids = [
-    azurerm_network_interface.windows_vm_nic.id,
+    azurerm_network_interface.windows_vm_nic[count.index].id,
   ]
 
   os_disk {
