@@ -1,4 +1,3 @@
-# Required
 variable "resource_group_name" {
   type        = string
   description = "rg name"
@@ -9,17 +8,12 @@ variable "location" {
   description = "location"
 }
 
-variable "linux_vm_num" {
-  type = number
-  description = "Linux VM Counts"
-}
-
-variable "linux_vm_name" {
+variable "hostname" {
   type        = string
   description = "Computer name, host name"
 }
 
-variable "vm_size" {
+variable "size" {
   description = "linux vm size"
 }
 
@@ -63,10 +57,6 @@ variable "subnet_id" {
   description = "subnet id"
 }
 
-variable "nic_name" {
-  type        = string
-  description = "nic name"
-}
 
 # Optional
 variable "ip_configuration_name" {

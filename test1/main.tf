@@ -120,7 +120,7 @@ module "window" {
   location             = var.location
   windows_vm_num       = 2
   windows_vm_name      = "test-win-vm"
-  size                 = var.vm_size
+  vm_size                 = var.vm_size
   admin_username       = var.admin_username
   admin_password       = var.admin_password
   os_disk_sku          = var.os_disk_sku
