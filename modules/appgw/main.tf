@@ -62,10 +62,10 @@ resource "azurerm_application_gateway" "appgw" {
     backend_http_settings_name = var.backend_http_setting_name
   }
   
-#  ssl_certificate {
-#    name                = local.ssl_certificate_name
-#    data                = ""
-#  }
+  # ssl_certificate {
+  #   name                = var.ssl_certificate_name
+  #   data                = ""
+  # }
 }
 
 

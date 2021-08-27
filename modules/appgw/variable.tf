@@ -85,7 +85,7 @@ variable "http_request_routing_rule_type" {
     description = "appgw http request routing rule type"
 }
 
-variable "ssl_certificate" {
-    type = string
-    description = "appgw ssl certificate"
-}
+# variable "ssl_certificate" {
+#     type = string
+#     description = "appgw ssl certificate"
+# }
