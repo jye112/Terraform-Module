@@ -11,7 +11,7 @@ module "network" {
   vnet_name             = "test-vnet"
   vnet_address_space    = ["10.0.0.0/16"]
   subnet_num            = 2
-  subnet_name           = ["test-subnet-01", "test-subnet-02"]
+  subnet_name           = format("test-subnet-0%d", subnet_num.index+1)
   subnet_address_prefix = ["10.0.0.0/24", "10.1.0.0/24"]
 
   depends_on = [
