@@ -18,6 +18,11 @@ variable "vnet_address_space" {
   description = "vnet address space"
 }
 
+variable "subnet_num" {
+  type        = number
+  description = "subnet number"
+}
+
 variable "subnet_name" {
   type        = string
   description = "subnet name"
