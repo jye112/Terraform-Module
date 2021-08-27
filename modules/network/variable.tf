@@ -24,7 +24,7 @@ variable "subnet_num" {
 }
 
 variable "subnet_name" {
-  type        = list(any)
+  type        = list(string)
   description = "subnet name"
 }
 
