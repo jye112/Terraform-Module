@@ -128,7 +128,7 @@ module "appgw" {
   http_frontend_port             = 80
   frontend_ip_configuration_name = "appGwPublicFrontendIp"
   appgw_pip_id                   = module.appgw_ip.public_ip_address_id
-  backend_address_pool           = "appgw-backend-pool"
+  backend_address_pool_name      = "appgw-backend-pool"
   backend_http_setting_name      = "appgw-backend-setting"
   backend_http_setting_port      = 80
   backend_http_setting_protocol  = "Http"
