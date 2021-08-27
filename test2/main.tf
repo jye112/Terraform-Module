@@ -10,7 +10,6 @@ module "network" {
   location              = var.location
   vnet_name             = "test-vnet"
   vnet_address_space    = ["10.0.0.0/16"]
-  subnet_num            = 2
   subnet_name           = ["test-subnet-01", "test-subnet-02"]
   subnet_address_prefix = ["10.0.0.0/24", "10.1.0.0/24"]
 
@@ -65,7 +64,7 @@ module "nsg" {
 
   # if you want attach nsg to subnet, set true and subnet_id
   # if you don't want attach nsg to subnet, set false alone
-  attach_to_subnet = [true, module.network.subnet_id]
+  attach_to_subnet = [true, module.network.subnet_id[0]]
   depends_on = [
     azurerm_resource_group.rg
   ]
@@ -97,7 +96,7 @@ module "linux" {
   offer                = "UbuntuServer"
   sku                  = "18.04-LTS"
   os_tag               = "latest"
-  subnet_id            = module.network.subnet_id
+  subnet_id            = module.network.subnet_id[0]
   #public_ip_address_id = module.linux_public_ip.public_ip_address_id
   depends_on = [
     azurerm_resource_group.rg
@@ -124,7 +123,7 @@ module "appgw" {
   sku_name                       = "WAF_v2"
   sku_tier                       = "WAF_v2"
   gateway_ip_configuration_name  = "appGatewayIpConfig"
-  subnet_id                      = module.network.subnet_id
+  subnet_id                      = module.network.subnet_id[1]
   http_frontend_port_name        = "port_80"
   http_frontend_port             = 80
   frontend_ip_configuration_name = "appGwPublicFrontendIp"
