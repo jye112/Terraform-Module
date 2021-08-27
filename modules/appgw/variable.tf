@@ -99,3 +99,13 @@ variable "http_request_routing_rule_type" {
 #     type = string
 #     description = "appgw ssl certificate"
 # }
+
+variable "backend_vm_num" {
+    type = number
+    description = "appgw backend vm number"
+}
+
+variable "vm_nic_id" {
+    type = list(string)
+    description = "appgw backend vm nic id"
+}

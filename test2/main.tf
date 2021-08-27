@@ -136,5 +136,6 @@ module "appgw" {
   http_listener_protocol         = "Http"
   http_request_routing_rule_name = "appgw-routing-rule"
   http_request_routing_rule_type = "Basic"
-  count                          = 2
+  backend_vm_num                 = 2
+  vm_nic_id                      = [module.linux.linux_vm_nic[0], module.linux.linux_vm_nic[1]] 
 }
