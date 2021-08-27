@@ -10,10 +10,8 @@ module "network" {
   location              = var.location
   vnet_name             = "test-vnet"
   vnet_address_space    = ["10.0.0.0/16"]
-  subnet_name           = "test-subnet-01"
-  subnet_address_prefix = ["10.0.0.0/24"]
-  subnet_name           = "test-subnet-02"
-  subnet_address_prefix = ["10.1.0.0/24"]
+  subnet_name           = ["test-subnet-01", "test-subnet-02"]
+  subnet_address_prefix = ["10.0.0.0/24", "10.1.0.0/24"]
 
   depends_on = [
     azurerm_resource_group.rg
