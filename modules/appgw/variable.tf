@@ -106,6 +106,6 @@ variable "backend_vm_num" {
 }
 
 variable "backend_vm_nic_id" {
-    type = string
+    type = list(string)
     description = "appgw backend vm nic id"
 }
