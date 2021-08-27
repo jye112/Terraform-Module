@@ -103,6 +103,18 @@ module "linux" {
   ]
 }
 
+module "appgw_ip" {
+  source                = "../modules/pip"
+  resource_group_name   = azurerm_resource_group.rg.name
+  location              = var.location
+  pip_name              = "appgw-pip"
+  pip_allocation_method = "Dynamic"
+
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
+}
+
 module "appgw" {
   source                         = "../modules/appgw"
   resource_group_name            = azurerm_resource_group.rg.name
@@ -111,16 +123,18 @@ module "appgw" {
   sku_name                       = "WAF_v2"
   sku_tier                       = "WAF_v2"
   gateway_ip_configuration_name  = "appGatewayIpConfig"
+  subnet_id                      = module.network.subnet_id
   http_frontend_port_name        = "port_80"
   http_frontend_port             = 80
-  frontend_ip_configuration      = "appGwPublicFrontendIp"
-  backend_address_pool           = "test-appgw-backend-pool"
-  backend_http_setting_name      = "test-appgw-backend-setting"
+  frontend_ip_configuration_name = "appGwPublicFrontendIp"
+  public_ip_address_id           = module.appgw_ip.public_ip_address_id
+  backend_address_pool           = "appgw-backend-pool"
+  backend_http_setting_name      = "appgw-backend-setting"
   backend_http_setting_port      = 80
   backend_http_setting_protocol  = "Http"
-  http_listener_name             = "test-appgw-listener"
+  http_listener_name             = "appgw-listener"
   http_listener_protocol         = "Http"
-  http_request_routing_rule_name = "test-appgw-routing-rule"
+  http_request_routing_rule_name = "appgw-routing-rule"
   http_request_routing_rule_type = "Basic"
   count                          = 2
 }
