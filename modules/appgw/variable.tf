@@ -55,9 +55,9 @@ variable "appgw_pip_id" {
     description = "appgw frontend ip"
 }
 
-variable "backend_address_pool" {
+variable "backend_address_pool_name" {
     type = string
-    description = "appgw backend address pool"
+    description = "appgw backend address pool name"
 }
 
 variable "backend_http_setting_name" {
