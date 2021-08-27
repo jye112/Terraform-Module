@@ -4,14 +4,3 @@ provider "azurerm" {
 
     features {}
 }
-
-# # Remote Backend
-# terraform {
-#   backend "remote" {
-#     organization = "jye-test-lab"
-
-#     workspaces {
-#       name = "Module-Test"
-#     }
-#   }
-# }
