@@ -71,7 +71,7 @@ resource "azurerm_application_gateway" "appgw" {
 
 resource "azurerm_network_interface_application_gateway_backend_address_pool_association" "appgw_cloo_backend" {
  count                   = var.vm_num
- network_interface_id    = var.vm_nic[count.index].id
+ network_interface_id    = azurerm_network_interface.linux_vm_nic[count.index].id
  ip_configuration_name   = "ipconfig1"
  backend_address_pool_id = azurerm_application_gateway.appgw.backend_address_pool[1].id
 }
