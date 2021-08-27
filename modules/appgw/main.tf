@@ -31,7 +31,7 @@ resource "azurerm_application_gateway" "appgw" {
 
   frontend_ip_configuration {
     name                 = var.frontend_ip_configuration_name
-    public_ip_address_id = var.appgw_pip.id
+    public_ip_address_id = var.appgw_pip_id
   }
 
   backend_address_pool {

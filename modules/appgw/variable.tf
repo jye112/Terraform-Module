@@ -30,6 +30,11 @@ variable "gateway_ip_configuration_name" {
     description = "appgw gateway"
 }
 
+variable "subnet_id" {
+    type = string
+    description = "appgw gateway subnet ID"
+}
+
 variable "http_frontend_port_name" {
     type = string
     description = "appgw http frontend port name"
@@ -43,6 +48,11 @@ variable "http_frontend_port" {
 variable "frontend_ip_configuration_name" {
     type = string
     description = "appgw frontned ip configuration name"
+}
+
+variable "appgw_pip_id" {
+    type = string
+    description = "appgw frontend ip"
 }
 
 variable "backend_address_pool" {

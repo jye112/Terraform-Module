@@ -12,6 +12,8 @@ module "network" {
   vnet_address_space    = ["10.0.0.0/16"]
   subnet_name           = "test-subnet-01"
   subnet_address_prefix = ["10.0.0.0/24"]
+  subnet_name           = "test-subnet-02"
+  subnet_address_prefix = ["10.1.0.0/24"]
 
   depends_on = [
     azurerm_resource_group.rg
@@ -127,7 +129,7 @@ module "appgw" {
   http_frontend_port_name        = "port_80"
   http_frontend_port             = 80
   frontend_ip_configuration_name = "appGwPublicFrontendIp"
-  public_ip_address_id           = module.appgw_ip.public_ip_address_id
+  appgw_pip_id                   = module.appgw_ip.public_ip_address_id
   backend_address_pool           = "appgw-backend-pool"
   backend_http_setting_name      = "appgw-backend-setting"
   backend_http_setting_port      = 80
