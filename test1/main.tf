@@ -75,7 +75,8 @@ module "linux_public_ip" {
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
   pip_name              = "linux-vm-pip"
-  pip_allocation_method = var.allocation_method
+  pip_allocation_method = "Static"
+  pip_sku               = "Standard"
 
   depends_on = [
     azurerm_resource_group.rg
@@ -87,7 +88,8 @@ module "window_public_ip" {
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
   pip_name              = "windows-vm-pip"
-  pip_allocation_method = var.allocation_method
+  pip_allocation_method = "Static"
+  pip_sku               = "Standard"
 
   depends_on = [
     azurerm_resource_group.rg
@@ -98,6 +100,7 @@ module "linux" {
   source               = "../modules/linux-server"
   resource_group_name  = azurerm_resource_group.rg.name
   location             = var.location
+  linux_avset          = "test-linux-avset"
   linux_vm_num         = 2
   linux_vm_name        = "test-linux-vm"
   vm_size              = var.vm_size
@@ -119,6 +122,7 @@ module "window" {
   source               = "../modules/windows-server"
   resource_group_name  = azurerm_resource_group.rg.name
   location             = var.location
+  windows_avset        = "test-windows-avset"
   windows_vm_num       = 2
   windows_vm_name      = "test-win-vm"
   vm_size              = var.vm_size
@@ -135,3 +139,4 @@ module "window" {
     azurerm_resource_group.rg
   ]
 }
+

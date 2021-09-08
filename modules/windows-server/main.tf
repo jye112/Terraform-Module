@@ -2,6 +2,14 @@ data "azurerm_resource_group" "windows_vm" {
   name = var.resource_group_name
 }
 
+resource "azurerm_availability_set" "windows_avset" {
+  name                          = var.windows_avset
+  location                      = coalesce(var.location, data.azurerm_resource_group.windows_vm.location)
+  resource_group_name           = data.azurerm_resource_group.windows_vm.name
+  platform_fault_domain_count   = 2
+  platform_update_domain_count  = 5
+}
+
 resource "azurerm_network_interface" "windows_vm_nic" {
   count               = var.windows_vm_num
   name                = format("%s-%d-nic", var.windows_vm_name, count.index+1)
@@ -24,6 +32,7 @@ resource "azurerm_windows_virtual_machine" "windows_vm" {
   size                = var.vm_size
   admin_username      = var.admin_username
   admin_password      = var.admin_password
+  availability_set_id = azurerm_availability_set.windows_avset.id
   network_interface_ids = [
     azurerm_network_interface.windows_vm_nic[count.index].id,
   ]

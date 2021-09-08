@@ -7,5 +7,5 @@ output "linux_vm_public_ip" {
 }
 
 output "linux_vm_nic" {
-    value = azurerm_linux_virtual_machine.linux_vm.*.network_interface_id
+    value = azurerm_linux_virtual_machine.linux_vm.*.network_interface_ids
 }

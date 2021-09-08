@@ -2,6 +2,12 @@ data "azurerm_resource_group" "appgw" {
   name = var.resource_group_name
 }
 
+data "azurerm_network_interface" "linux_vm_nic" {
+  count               = var.backend_vm_num
+  name                = format("%s-%d-nic", var.backend_vm_name, count.index+1)
+  resource_group_name = data.azurerm_resource_group.appgw.name
+}
+
 # Appgw
 resource "azurerm_application_gateway" "appgw" {
   name                = var.appgw_name
@@ -71,8 +77,8 @@ resource "azurerm_application_gateway" "appgw" {
 
 resource "azurerm_network_interface_application_gateway_backend_address_pool_association" "appgw_backend" {
  count                   = var.backend_vm_num
- network_interface_id    = var.backend_vm_nic_id[count.index]
- ip_configuration_name   = "ipconfig1"
- backend_address_pool_id = azurerm_application_gateway.appgw.backend_address_pool[count.index].id
+ network_interface_id    = data.azurerm_network_interface.linux_vm_nic[count.index].id
+ ip_configuration_name   = "Internal"
+ backend_address_pool_id = azurerm_application_gateway.appgw.backend_address_pool[0].id
 }
 

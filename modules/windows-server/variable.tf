@@ -15,6 +15,11 @@ variable "subnet_id" {
 }
 
 # VM
+variable "windows_avset" {
+  type = string
+  description = "Windows AVSet"
+}
+
 variable "windows_vm_num" {
   type = number
   description = "Windows VM Counts"

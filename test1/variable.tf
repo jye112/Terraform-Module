@@ -11,12 +11,6 @@ variable "location" {
   default     = "koreacentral"
 }
 
-# PIP
-variable "allocation_method" {
-  type        = string
-  description = "Public ip allocation method"
-  default     = "Dynamic"
-}
 
 # VM
 variable "vm_size" {

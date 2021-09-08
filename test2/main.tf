@@ -11,7 +11,7 @@ module "network" {
   vnet_name             = "test-vnet"
   vnet_address_space    = ["10.0.0.0/16"]
   subnet_name           = ["test-subnet-01", "test-subnet-02"]
-  subnet_address_prefix = ["10.0.0.0/24", "10.1.0.0/24"]
+  subnet_address_prefix = ["10.0.0.0/24", "10.0.1.0/24"]
 
   depends_on = [
     azurerm_resource_group.rg
@@ -65,6 +65,7 @@ module "nsg" {
   # if you want attach nsg to subnet, set true and subnet_id
   # if you don't want attach nsg to subnet, set false alone
   attach_to_subnet = [true, module.network.subnet_id[0]]
+  
   depends_on = [
     azurerm_resource_group.rg
   ]
@@ -75,7 +76,9 @@ module "linux_public_ip" {
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
   pip_name              = "linux-vm-pip"
-  pip_allocation_method = "Dynamic"
+  pip_allocation_method = "Static"
+  pip_sku               = "Standard"
+  pip_av_zone           = "No-Zone"
 
   depends_on = [
     azurerm_resource_group.rg
@@ -86,6 +89,7 @@ module "linux" {
   source               = "../modules/linux-server"
   resource_group_name  = azurerm_resource_group.rg.name
   location             = var.location
+  linux_avset          = "test-linux-avset"
   linux_vm_num         = 2
   linux_vm_name        = "test-linux-vm"
   vm_size              = "Standard_D2s_v3"
@@ -97,7 +101,8 @@ module "linux" {
   sku                  = "18.04-LTS"
   os_tag               = "latest"
   subnet_id            = module.network.subnet_id[0]
-  #public_ip_address_id = module.linux_public_ip.public_ip_address_id
+  public_ip_address_id = module.linux_public_ip.public_ip_address_id
+  
   depends_on = [
     azurerm_resource_group.rg
   ]
@@ -108,7 +113,9 @@ module "appgw_ip" {
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
   pip_name              = "appgw-pip"
-  pip_allocation_method = "Dynamic"
+  pip_allocation_method = "Static"
+  pip_sku               = "Standard"
+  pip_av_zone           = "No-Zone"
 
   depends_on = [
     azurerm_resource_group.rg
@@ -120,8 +127,8 @@ module "appgw" {
   resource_group_name            = azurerm_resource_group.rg.name
   location                       = var.location
   appgw_name                     = "test-appgw"
-  sku_name                       = "WAF_v2"
-  sku_tier                       = "WAF_v2"
+  sku_name                       = "Standard_v2"
+  sku_tier                       = "Standard_v2"
   gateway_ip_configuration_name  = "appGatewayIpConfig"
   subnet_id                      = module.network.subnet_id[1]
   http_frontend_port_name        = "port_80"
@@ -136,6 +143,10 @@ module "appgw" {
   http_listener_protocol         = "Http"
   http_request_routing_rule_name = "appgw-routing-rule"
   http_request_routing_rule_type = "Basic"
+  backend_vm_name                = "test-linux-vm"
   backend_vm_num                 = 2
-  backend_vm_nic_id              = [module.linux.linux_vm_nic[0], module.linux.linux_vm_nic[1]] 
+
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
 }

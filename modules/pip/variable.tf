@@ -17,5 +17,14 @@ variable "pip_name" {
 variable "pip_allocation_method" {
   type        = string
   description = "Allocation Method"
-  default     = "Dynamic"
+}
+
+variable "pip_sku" {
+  type        = string
+  description = "SKU"
+}
+
+variable "pip_av_zone" {
+  type        = string
+  description = "Public IP Availability Zone"
 }

@@ -100,12 +100,12 @@ variable "http_request_routing_rule_type" {
 #     description = "appgw ssl certificate"
 # }
 
+variable "backend_vm_name" {
+  type        = string
+  description = "Computer name, host name"
+}
+
 variable "backend_vm_num" {
     type = number
     description = "appgw backend vm number"
-}
-
-variable "backend_vm_nic_id" {
-    type = list(string)
-    description = "appgw backend vm nic id"
 }
