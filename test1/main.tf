@@ -64,7 +64,7 @@ module "nsg" {
 
   # if you want attach nsg to subnet, set true and subnet_id
   # if you don't want attach nsg to subnet, set false alone
-  attach_to_subnet = [true, module.network.subnet_id]
+  attach_to_subnet = [true, module.network.subnet_id[0]]
   depends_on = [
     azurerm_resource_group.rg
   ]
@@ -113,7 +113,7 @@ module "linux" {
   offer                = "UbuntuServer"
   sku                  = "18.04-LTS"
   os_tag               = var.os_tag
-  subnet_id            = module.network.subnet_id
+  subnet_id            = module.network.subnet_id[0]
   #public_ip_address_id = module.linux_public_ip.public_ip_address_id
   depends_on = [
     azurerm_resource_group.rg
@@ -135,7 +135,7 @@ module "window" {
   offer                = "WindowsServer"
   sku                  = "2019-Datacenter"
   os_tag               = var.os_tag
-  subnet_id            = module.network.subnet_id
+  subnet_id            = module.network.subnet_id[0]
   #public_ip_address_id = module.window_public_ip.public_ip_address_id
   depends_on = [
     azurerm_resource_group.rg
