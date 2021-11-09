@@ -10,8 +10,8 @@ module "network" {
   location              = var.location
   vnet_name             = "test-vnet"
   vnet_address_space    = ["10.0.0.0/16"]
-  subnet_name           = ["test-subnet-01"]
-  subnet_address_prefix = ["10.0.0.0/24"]
+  subnet_name           = ["test-subnet-01", "test-subnet-02"]
+  subnet_address_prefix = ["10.0.0.0/24", "10.0.1.0/24"]
 
   depends_on = [
     azurerm_resource_group.rg
@@ -135,7 +135,7 @@ module "window" {
   offer                = "WindowsServer"
   sku                  = "2019-Datacenter"
   os_tag               = var.os_tag
-  subnet_id            = module.network.subnet_id[0]
+  subnet_id            = module.network.subnet_id[1]
   #public_ip_address_id = module.window_public_ip.public_ip_address_id
   depends_on = [
     azurerm_resource_group.rg
