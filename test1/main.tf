@@ -77,6 +77,7 @@ module "linux_public_ip" {
   pip_name              = "linux-vm-pip"
   pip_allocation_method = "Static"
   pip_sku               = "Standard"
+  pip_av_zone           = "No-Zone"
 
   depends_on = [
     azurerm_resource_group.rg
@@ -90,6 +91,7 @@ module "window_public_ip" {
   pip_name              = "windows-vm-pip"
   pip_allocation_method = "Static"
   pip_sku               = "Standard"
+  pip_av_zone           = "No-Zone"
 
   depends_on = [
     azurerm_resource_group.rg
