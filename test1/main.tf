@@ -10,7 +10,7 @@ module "network" {
   location              = var.location
   vnet_name             = "test-vnet"
   vnet_address_space    = ["10.0.0.0/16"]
-  subnet_name           = "test-subnet-01"
+  subnet_name           = ["test-subnet-01"]
   subnet_address_prefix = ["10.0.0.0/24"]
 
   depends_on = [
