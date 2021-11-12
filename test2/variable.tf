@@ -17,6 +17,6 @@ variable "admin_username" {
 
 variable "admin_password" {
   type    = string
-  default = "qwer1234!@#$"
+  default = ""
 }
 
