@@ -26,7 +26,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   name                = "test-aks-cluster"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  kubernetes_version  = "1.19.3"
+  kubernetes_version  = "1.20.9"
 
   # Node pools
   default_node_pool {
