@@ -68,7 +68,7 @@ resource "kubernetes_deployment" "mysql" {
           resources {
             limits = {
               cpu    = "500m"
-              memory = "258Mi"
+              memory = "1000Mi"
             }
             requests = {
               cpu    = "250m"
