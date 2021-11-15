@@ -8,7 +8,7 @@ module "network" {
   resource_group_name       = azurerm_resource_group.rg.name
   location                  = azurerm_resource_group.rg.location
   vnet_name                 = "aks-vnet"
-  vnet_address_space        = "10.0.0.0/8"
+  vnet_address_space        = ["10.0.0.0/8"]
   subnet_name               = ["aksSubnet01", "subnet01"]
   subnet_address_prefix     = ["10.240.0.0/16", "10.1.0.0/16"]
   depends_on                = [azurerm_resource_group.rg]
