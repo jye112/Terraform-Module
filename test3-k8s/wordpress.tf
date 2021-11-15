@@ -65,7 +65,16 @@ resource "kubernetes_deployment" "mysql" {
             container_port = 3306
             name           = "mysql"
           }
-
+        }
+        resources {
+          limits = {
+            cpu    = "500m"
+            memory = "258Mi"
+          }
+          requests = {
+            cpu    = "250m"
+            memory = "128Mi"
+          }
         }
       }
     }
@@ -142,6 +151,16 @@ resource "kubernetes_deployment" "wp" {
           port {
             container_port = 80
             name           = "wordpress"
+          }
+        }
+        resources {
+          limits = {
+            cpu    = "500m"
+            memory = "258Mi"
+          }
+          requests = {
+            cpu    = "250m"
+            memory = "128Mi"
           }
         }
       }
