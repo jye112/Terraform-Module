@@ -20,7 +20,7 @@ resource "azurerm_network_interface" "linux_vm_nic" {
     name                          = var.ip_configuration_name
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = var.private_ip_address_allocation
-    public_ip_address_id          = var.public_ip_address_id == null ? null : var.public_ip_address_id
+    public_ip_address_ids         = [var.public_ip_address_id[count.index+1] == null ? null : var.public_ip_address_id[count.index+1]]
   }
 }
 
