@@ -1,0 +1,5 @@
+# Provider
+provider "azurerm" {
+    features {}
+
+}
