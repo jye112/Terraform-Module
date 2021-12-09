@@ -72,8 +72,8 @@ module "linux_public_ip" {
   source                = "../modules/pip"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
-  for_each              = toset(["linux-vm-pip-01", "linux-vm-pip-02"])
-  pip_name              = each.key
+  pip_num               = 2
+  pip_name              = "linux-vm-pip"
   pip_allocation_method = "Static"
   pip_sku               = "Standard"
   pip_av_zone           = "No-Zone"
@@ -88,6 +88,8 @@ module "linux" {
   source                = "../modules/linux-server"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
+  pip_num               = module.linux_public_ip.pip_num
+  pip_name              = module.linux_public_ip.pip_name
   linux_avset           = "test-linux-avset"
   linux_vm_num          = 2
   linux_vm_name         = "test-linux-vm"
@@ -100,8 +102,6 @@ module "linux" {
   sku                   = "18.04-LTS"
   os_tag                = "latest"
   subnet_id             = module.network.subnet_id[0]
-  for_each              = toset(["module.linux_public_ip[0].public_ip_address_id", "module.linux_public_ip[1].public_ip_address_id"])
-  public_ip_address_id  = each.key
   depends_on = [
     azurerm_resource_group.rg
   ]
