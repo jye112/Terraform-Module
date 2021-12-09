@@ -89,9 +89,9 @@ variable "os_disk_caching" {
   default     = "ReadWrite"
 }
 
-variable "public_ip_address_id" {
+variable "public_ip_address_ids" {
   type        = list(string)
-  description = "Public ip address id"
+  description = "Public IP address ids"
 }
 
 variable "custom_data" {
