@@ -99,11 +99,6 @@ variable "os_disk_caching" {
   default     = "ReadWrite"
 }
 
-variable "public_ip_address_id" {
-  type        = string
-  description = "Public IP address ID"
-}
-
 variable "custom_data" {
   type        = string
   description = "Script"
