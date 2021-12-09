@@ -3,8 +3,7 @@ data "azurerm_resource_group" "pip" {
 }
 
 resource "azurerm_public_ip" "pip" {
-  count               = var.pip_num
-  name                = format("%s-%d", var.pip_name, count.index+1)
+  name                = var.pip_name
   resource_group_name = data.azurerm_resource_group.pip.name
   location            = coalesce(var.location, data.azurerm_resource_group.pip.location)
   allocation_method   = var.pip_allocation_method
