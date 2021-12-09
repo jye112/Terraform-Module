@@ -72,7 +72,6 @@ module "linux_public_ip" {
   source                = "../modules/pip"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
-  pip_num               = 2
   for_each              = toset(["linux-vm-pip-01", "linux-vm-pip-02"])
   pip_name              = each.key
   pip_allocation_method = "Static"
