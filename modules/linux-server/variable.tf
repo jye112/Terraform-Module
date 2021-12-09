@@ -14,6 +14,16 @@ variable "subnet_id" {
   description = "subnet id"
 }
 
+variable "pip_num" {
+  type        = number
+  description = "pip num"
+}
+
+variable "pip_name" {
+  type        = string
+  description = "pip name"
+}
+
 # VM
 variable "linux_avset" {
   type = string
