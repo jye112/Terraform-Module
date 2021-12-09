@@ -85,22 +85,22 @@ module "linux_public_ip" {
 
 
 module "linux" {
-  source               = "../modules/linux-server"
-  resource_group_name  = azurerm_resource_group.rg.name
-  location             = var.location
-  linux_avset          = "test-linux-avset"
-  linux_vm_num         = 2
-  linux_vm_name        = "test-linux-vm"
-  vm_size              = "Standard_D2s_v3"
-  admin_username       = var.admin_username
-  admin_password       = var.admin_password
-  os_disk_sku          = "Standard_LRS"
-  publisher            = "Canonical"
-  offer                = "UbuntuServer"
-  sku                  = "18.04-LTS"
-  os_tag               = "latest"
-  subnet_id            = module.network.subnet_id[0]
-  public_ip_address_id = [module.linux_public_ip.public_ip_address_id[0], module.linux_public_ip.public_ip_address_id[1]]
+  source                = "../modules/linux-server"
+  resource_group_name   = azurerm_resource_group.rg.name
+  location              = var.location
+  linux_avset           = "test-linux-avset"
+  linux_vm_num          = 2
+  linux_vm_name         = "test-linux-vm"
+  vm_size               = "Standard_D2s_v3"
+  admin_username        = var.admin_username
+  admin_password        = var.admin_password
+  os_disk_sku           = "Standard_LRS"
+  publisher             = "Canonical"
+  offer                 = "UbuntuServer"
+  sku                   = "18.04-LTS"
+  os_tag                = "latest"
+  subnet_id             = module.network.subnet_id[0]
+  public_ip_address_ids = [module.linux_public_ip.public_ip_address_id[0], module.linux_public_ip.public_ip_address_id[1]]
   depends_on = [
     azurerm_resource_group.rg
   ]
