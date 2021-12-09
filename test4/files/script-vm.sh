@@ -17,7 +17,7 @@ cat << EOM > /var/www/html/index.html
 <html>
 <body>
 <h1>Hanwha Solution Terraform PoC</h1>
-<p>VM2 Success!!</p>
+<p>VM Success!!</p>
 </body>
 </html>
 EOM
