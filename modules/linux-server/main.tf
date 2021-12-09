@@ -50,4 +50,6 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
   }
 
   disable_password_authentication = false
+  
+  custom_data = var.custom_data
 }
