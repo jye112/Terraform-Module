@@ -92,11 +92,9 @@ variable "os_disk_caching" {
 variable "public_ip_address_id" {
   type        = list(string)
   description = "Public ip address id"
-  default     = ""
 }
 
 variable "custom_data" {
   type        = string
   description = "Script"
-  default     = ""
 }
