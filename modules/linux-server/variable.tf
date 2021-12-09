@@ -94,3 +94,9 @@ variable "public_ip_address_id" {
   description = "Public ip address id"
   default     = ""
 }
+
+variable "custom_data" {
+  type        = string
+  description = "Script"
+  default     = ""
+}
