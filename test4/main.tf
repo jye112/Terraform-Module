@@ -100,7 +100,8 @@ module "linux" {
   sku                   = "18.04-LTS"
   os_tag                = "latest"
   subnet_id             = module.network.subnet_id[0]
-  public_ip_address_ids = [module.linux_public_ip.public_ip_address_id[0], module.linux_public_ip.public_ip_address_id[1]]
+  for_each              = toset([module.linux_public_ip[0].public_ip_address_id, module.linux_public_ip[1].public_ip_address_id])
+  public_ip_address_id  = each.key
   depends_on = [
     azurerm_resource_group.rg
   ]
