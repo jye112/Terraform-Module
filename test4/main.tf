@@ -72,7 +72,6 @@ module "linux_public_ip" {
   source                = "../modules/pip"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
-  pip_num               = 2
   pip_name              = "linux-vm-pip"
   pip_allocation_method = "Static"
   pip_sku               = "Standard"
@@ -88,8 +87,6 @@ module "linux" {
   source                = "../modules/linux-server"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
-  pip_num               = 2
-  pip_name              = module.linux_public_ip.public_ip_name
   linux_avset           = "test-linux-avset"
   linux_vm_num          = 2
   linux_vm_name         = "test-linux-vm"
