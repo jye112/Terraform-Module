@@ -9,11 +9,6 @@ variable "location" {
   description = "Location"
 }
 
-variable "pip_num" {
-  type        = number
-  description = "Public IP Num"
-}
-
 variable "pip_name" {
   type        = string
   description = "Public ip name"
