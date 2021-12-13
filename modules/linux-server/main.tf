@@ -2,11 +2,6 @@ data "azurerm_resource_group" "linux_vm" {
   name = var.resource_group_name
 }
 
-data "azurerm_public_ip" "pip" {
-  count = var.pip_num
-  name  = format("%s-%d", var.pip_name, count.index+1)
-}
-  
 resource "azurerm_availability_set" "linux_avset" {
   name                         = var.linux_avset
   location                     = coalesce(var.location, data.azurerm_resource_group.linux_vm.location)
@@ -25,7 +20,7 @@ resource "azurerm_network_interface" "linux_vm_nic" {
     name                          = var.ip_configuration_name
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = var.private_ip_address_allocation
-    public_ip_address_id          = ["${data.azurerm_public_ip.pip[count.index].id}"]
+    public_ip_address_id          = var.public_ip_address_id
   }
 }
 
