@@ -79,7 +79,6 @@ variable "os_tag" {
   description = "image version"
 }
 
-
 # Optional
 variable "ip_configuration_name" {
   type        = string
@@ -91,6 +90,11 @@ variable "private_ip_address_allocation" {
   type        = string
   description = "Private IP Allocation Method"
   default     = "Dynamic"
+}
+
+variable "public_ip_address_id" {
+  type = string
+  description = "Public IP Address ID"
 }
 
 variable "os_disk_caching" {
