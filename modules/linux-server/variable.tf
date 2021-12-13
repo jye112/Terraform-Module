@@ -92,10 +92,10 @@ variable "private_ip_address_allocation" {
   default     = "Dynamic"
 }
 
-variable "public_ip_address_id" {
-  type = string
-  description = "Public IP Address ID"
-}
+#variable "public_ip_address_id" {
+#  type = string
+#  description = "Public IP Address ID"
+#}
 
 variable "os_disk_caching" {
   type        = string
