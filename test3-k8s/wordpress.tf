@@ -46,7 +46,7 @@ resource "kubernetes_deployment" "mysql" {
 
           env {
             name  = "MYSQL_ROOT_PASSWORD"
-            value = "dkagh1."
+            value = "password"
           }
           env {
             name  = "MYSQL_DATABASE"
@@ -58,7 +58,7 @@ resource "kubernetes_deployment" "mysql" {
           }
           env {
             name  = "MYSQL_PASSWORD"
-            value = "dkagh1."
+            value = "password"
           }
 
           port {
@@ -145,7 +145,7 @@ resource "kubernetes_deployment" "wp" {
           }
           env {
             name  = "WORDPRESS_DB_PASSWORD"
-            value = "dkagh1."
+            value = "password"
           }
 
           port {
